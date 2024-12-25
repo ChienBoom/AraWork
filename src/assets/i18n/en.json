@@ -1,0 +1,16 @@
+{
+  "Menu": {
+    "Home": "Home",
+    "Category": "Category",
+    "AboutUs": "About us",
+    "Service": "Service",
+    "Blog": "Blog",
+    "ContactUs": "Contact us"
+  },
+  "Message": {
+    "Mandatory": "Mandatory",
+    "MiniumLength": "Minimum length is "
+  },
+  "HELLO": "Hello",
+  "WELCOME": "Welcome to our application!"
+}

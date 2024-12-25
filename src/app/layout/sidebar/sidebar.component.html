@@ -1,0 +1,19 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer [(opened)]="isOpenSidebar" class="sidenav" mode="side">
+    <div class="sidenav-menu">
+      <div class="mt-[50px]">
+        <div *ngFor="let menu of menus" class="sidenav-munu-item mb-[5px]">
+          <button mat-button [routerLink]="menu.path" class="item-button">
+            <mat-icon
+              [fontIcon]="menu.icon"
+            ></mat-icon>
+            <span class="text-base ml-1 font-normal">{{ menu.name }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-drawer>
+  <div class="sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

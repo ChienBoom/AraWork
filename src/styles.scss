@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "@angular/material" as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --background-color: #eff3f8;
+  --header-background-color: #fff;
+  --sidebar-background-color: #eff3f8;
+  --sidebar-content-color: #fff;
+  --text-color: #333333;
+}
+
+.light-theme {
+  @include mat.core();
+  $app-primary: mat.define-palette(mat.$indigo-palette);
+  $app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+  $app-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $app-primary,
+        accent: $app-accent,
+      ),
+    )
+  );
+  @include mat.all-component-themes($app-theme);
+  --background-color: #eff3f8;
+  --header-background-color: #fff;
+  --sidebar-background-color: #eff3f8;
+  --sidebar-content-color: #fff;
+  --text-color: #333333;
+  background-color: var(--background-color); /* Light background */
+  color: var(--text-color); /* Dark text */
+}
+
+.dark-theme {
+  @include mat.core();
+  $app-primary: mat.define-palette(mat.$purple-palette);
+  $app-accent: mat.define-palette(mat.$deep-orange-palette, A200, A100, A400);
+  $app-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $app-primary,
+        accent: $app-accent,
+      ),
+    )
+  );
+  @include mat.all-component-themes($app-theme);
+  // Add background and text color
+  --background-color: #374151;
+  --header-background-color: #1e1e2f;
+  --sidebar-background-color: #374151;
+  --sidebar-content-color: #1e1e2f;
+  --text-color: #333333;
+  background-color: var(--background-color); /* Dark background */
+  color: var(--text-color); /* Light text */
+}
+
+.body.light-theme{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.body.dark-theme{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

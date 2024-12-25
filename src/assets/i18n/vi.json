@@ -1,0 +1,16 @@
+{
+  "Menu": {
+    "Home": "Trang chủ",
+    "Category": "Danh mục",
+    "AboutUs": "Chúng tôi",
+    "Service": "Dịch vụ",
+    "Blog": "Blog",
+    "ContactUs": "Liên hệ"
+  },
+  "Message": {
+    "Mandatory": "Yêu cầu bắt buộc",
+    "MiniumLength": "Độ dài tối thiểu là "
+  },
+  "HELLO": "Xin chào",
+  "WELCOME": "Chào mừng bạn đến với ứng dụng của chúng tôi!"
+}

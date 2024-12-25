@@ -1,0 +1,27 @@
+.header-container {
+  position: fixed;
+  height: 80px;
+  z-index: 997;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0 2rem;
+  background-color: var(--header-background-color);
+  transition: left 0.2s;
+  box-shadow: 0 3px 5px #00000005, 0 0 2px #0000000d, 0 1px 4px #00000014;
+
+  .header-logo {
+    color: var(--surface-900);
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 60px;
+    border-radius: 12px;
+  }
+
+  .header-menu-languages{
+    width: 69px !important;
+    border-width: thin;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
