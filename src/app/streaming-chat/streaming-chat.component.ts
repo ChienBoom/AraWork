@@ -42,13 +42,13 @@ import { StreamingChatService } from '../services/streaming-chat.service';
 export class StreamingChatComponent implements OnInit {
   @Input() isHiddenButton = false; //Ẩn button chat
   @Input() showChatFirst = false; //Mở chat khi khởi động ứng dụng
-  @Input() isStream = true; //Sử dụng chế độ stream trong request
+  @Input() isStream = false; //Sử dụng chế độ stream trong request
   @Input() isEnableHistory = true; //Sử dụng lịch sử chat
   @Input() firstQuestion = 'how can you help me';
   @Input() chatTitle = 'Aratech AI'; //Tiêu đề khung chat
   @Input() chatColor = 'rgb(63, 81, 181)'; // Màu cho khung chat
   @Input() textTitleColor = 'white'; // Màu cho title khung chat
-  @Input() botImageUrl = 'assets/images/logo/aratech-logo-picture.png'; // Đường dẫn ảnh cho Bot
+  @Input() botImageUrl = 'assets/logo/logo.svg'; // Đường dẫn ảnh cho Bot
   @Input() userImageUrl =
     'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'; // Đường dẫn ảnh cho User
   @Input() botChatBackgroundColor = 'rgb(247, 248, 255)'; // Màu background của Bot
@@ -59,9 +59,9 @@ export class StreamingChatComponent implements OnInit {
   @Input() placeholderInput = 'Type your question'; // placeholder của phần searchInput
   @Input() heightFrame = '550px'; // Chiều cao khung chat(Tính theo px hoặc %)
   @Input() widthFrame = '400px'; // Chiều rộng khung chat(Tính theo px hoặc %)
-  @Input() buttonImageUrl = 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'; // Đường dẫn icon của button
+  @Input() buttonImageUrl = 'assets/logo/logo.svg'; // Đường dẫn icon của button
   @Input() borderRadius = '6px'; // bo viền cho khung chat
-  @Input() chatImageUrl = 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'; //Đường dẫn ảnh Chat
+  @Input() chatImageUrl = 'assets/logo/logo.svg'; //Đường dẫn ảnh Chat
   @Input() chatPowerBy = 'Aratech VN'; //Được xây dựng bởi
   @Input() originUrlConfig = 'https://flow.ai.aratech.vn'; //Cấu hình origin request url
   @Input() sessionId = 'd5be43de-921c-4f65-8845-175af3cb82d3'; //Cấu hình sessionid request url
@@ -259,18 +259,16 @@ export class StreamingChatComponent implements OnInit {
       });
       this.subscription = this.http
         .post(
-          `${this.originUrlConfig}${this.midUrl}${this.sessionId}?stream=${this.isStream}`,
-          {
-            input_value: question,
-            output_type: 'chat',
-            input_type: 'chat',
-            tweaks: this.tweaks,
-          },
+          `https://localhost:7228/chat-api/chat/chat`,
+          'bạn có biết về ngôh ngữ python không',
           { headers: headers }
         )
         .subscribe(
           (rs: any) => {
-            this.answers.push(rs.outputs[0].outputs[0].messages[0].message);
+            console.log("rs", rs)
+            console.log('text: ', rs.candidates[0].content.parts[0].text);
+            this.answers.push(rs.candidates[0].content.parts[0].text);
+            // this.answers.push(rs.outputs[0].outputs[0].messages[0].message);
             this.typeEffect();
           },
           (error) => {
