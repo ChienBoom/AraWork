@@ -13,7 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatMenuModule,
+    MatDividerModule
   ],
   exports: [AppLayoutComponent],
 })

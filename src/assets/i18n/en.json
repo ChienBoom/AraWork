@@ -1,11 +1,10 @@
 {
   "Menu": {
-    "Home": "Home",
-    "Category": "Category",
-    "AboutUs": "About us",
-    "Service": "Service",
-    "Blog": "Blog",
-    "ContactUs": "Contact us"
+    "Dashboard": "Dashboard",
+    "Calendar": "Calendar",
+    "Project": "Project",
+    "Task": "Task",
+    "Document": "Document"
   },
   "Message": {
     "Mandatory": "Mandatory",

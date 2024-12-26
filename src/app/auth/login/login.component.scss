@@ -1,0 +1,24 @@
+.container{
+  background-color: var(--background-color);
+
+  .login-form{
+    background-color: var(--header-background-color);
+    color: var(--text-color);
+
+    .input-form{
+      background-color: var(--background-color) !important;
+    }
+
+    .input-check{
+      background-color: var(--app-color);
+    }
+
+    .login-btn{
+      background-color: var(--app-color);
+    }
+
+    .login-btn:hover{
+      opacity: 0.8;
+    }
+  }
+}

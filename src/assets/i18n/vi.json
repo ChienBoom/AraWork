@@ -1,11 +1,10 @@
 {
   "Menu": {
-    "Home": "Trang chủ",
-    "Category": "Danh mục",
-    "AboutUs": "Chúng tôi",
-    "Service": "Dịch vụ",
-    "Blog": "Blog",
-    "ContactUs": "Liên hệ"
+    "Dashboard": "Tổng quan",
+    "Calendar": "Lịch",
+    "Project": "Dự án",
+    "Task": "Nhiệm vụ",
+    "Document": "Tài liệu"
   },
   "Message": {
     "Mandatory": "Yêu cầu bắt buộc",

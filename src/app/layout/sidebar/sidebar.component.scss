@@ -24,9 +24,7 @@
     overflow-y: auto;
     background-color: var(--sidebar-content-color);
 
-    .sidenav-munu-item {
-      // border-width: thin;
-      // border-radius: 5px;
+    .sidenav-menu-item {
       padding: 5px;
       width: 90%;
       margin-left: 5%;
@@ -36,7 +34,13 @@
         display: flex;
         align-items: center;
         justify-content: start;
+        padding: 5px;
+        cursor: pointer;
       }
+    }
+
+    .menu-option-active{
+      color: var(--app-color);
     }
   }
 }

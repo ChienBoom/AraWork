@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { Menus } from '../enums/menus';
+import { SettingsService } from 'src/app/services/settings.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +10,26 @@ import { Menus } from '../enums/menus';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  isOpenSidebar: boolean = false;
+  path: string = '';
+  settings: any = {};
   menus = Menus;
-  constructor(public sidebarService: SidebarService) {}
+
+  constructor(
+    public sidebarService: SidebarService,
+    private settingsService: SettingsService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this.isOpenSidebar = this.sidebarService.loadOpenSidebar();
-    this.sidebarService.isOpen$.subscribe((state) => {
-      this.isOpenSidebar = state;
+    this.settings = this.settingsService.loadSettings();
+    this.settingsService.settingconfig$.subscribe((state) => {
+      this.settings = state;
     });
+    this.path = this.router.url;
+  }
+
+  handleRouter(path: string) {
+    this.router.navigate([`/${path}`]);
+    this.path = path;
   }
 }

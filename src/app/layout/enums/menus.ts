@@ -1,31 +1,31 @@
 export const Menus = [
   {
     id: 1,
-    name: 'Dashboard',
+    name: 'Menu.Dashboard',
     icon: 'dashboard',
-    path: '',
+    path: '/',
   },
   {
     id: 2,
-    name: 'Calendar',
+    name: 'Menu.Calendar',
     icon: 'calendar_month',
     path: '/calendar',
   },
   {
     id: 3,
-    name: 'Project',
+    name: 'Menu.Project',
     icon: 'rocket_launch',
     path: '/project',
   },
   {
     id: 4,
-    name: 'Task',
+    name: 'Menu.Task',
     icon: 'lightbulb_outline',
     path: '/task',
   },
   {
     id: 5,
-    name: 'Document',
+    name: 'Menu.Document',
     icon: 'description',
     path: '/document',
   },

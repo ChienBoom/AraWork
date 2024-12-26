@@ -5,8 +5,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 :root {
   --background-color: #eff3f8;
@@ -14,6 +20,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --sidebar-background-color: #eff3f8;
   --sidebar-content-color: #fff;
   --text-color: #333333;
+  --app-color: rgb(29 78 216);
 }
 
 .light-theme {
@@ -56,17 +63,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --header-background-color: #1e1e2f;
   --sidebar-background-color: #374151;
   --sidebar-content-color: #1e1e2f;
-  --text-color: #333333;
+  --text-color: #fff;
   background-color: var(--background-color); /* Dark background */
   color: var(--text-color); /* Light text */
 }
 
-.body.light-theme{
+.body.light-theme {
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
-.body.dark-theme{
+.body.dark-theme {
   background-color: var(--background-color);
   color: var(--text-color);
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Languages } from '../enums/languages';
 import { ThemeService } from 'src/app/services/theme.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Languages } from '../enums/settings';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-header',
@@ -11,42 +12,35 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
   languages = Languages;
-  language: string = 'vi';
-  isDarkmode: boolean = false;
-  isOpenSidebar: boolean = false;
+  settings: any = {};
   constructor(
     public themeService: ThemeService,
     public sidebarService: SidebarService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private settingsService: SettingsService
   ) {
-    this.translate.setDefaultLang(this.language);
-    this.language = localStorage.getItem('lang') || this.language;
-    this.translate.use(this.language);
+    this.settings = this.settingsService.loadSettings();
+    const language = this.settings?.language ?? 'vi';
+    this.settings.language = language;
+    this.settingsService.updateSettings(this.settings);
+    this.translate.setDefaultLang(language);
+    this.translate.use(language);
   }
 
   ngOnInit(): void {
-    this.isDarkmode = this.themeService.loadTheme();
+    const sidebar = this.settings?.sidebar ?? false;
+    this.settings.sidebar = sidebar;
+    this.settingsService.updateSettings(this.settings);
   }
 
   handleChangeSidebar() {
-    this.sidebarService.toggle();
+    this.settings.sidebar = !this.settings.sidebar;
+    this.settingsService.updateSettings(this.settings);
   }
 
-  handleChangeMode(event: any) {
-    this.isDarkmode = event.checked;
-    this.themeService.updateTheme(event.checked);
-  }
-
-  handleChangeLanguage(event: any){
-    console.log('lang: ', event.value)
-    this.language = event.value;
+  handleChangeLanguage(event: any) {
+    this.settings.language = event.value;
     this.translate.use(event.value);
-    localStorage.setItem('lang', event.value);
+    this.settingsService.updateSettings(this.settings);
   }
-
-  // handleTheme() {
-  //   const primary = '#42b0f5';
-  //   document.documentElement.style.setProperty('--app-primary', primary);
-  //   this.themeService.toggle();
-  // }
 }

@@ -2,20 +2,36 @@
   <div class="header-logo flex items-center">
     <img src="../../../assets/logo/logo.svg" alt="logo" />
     <button mat-icon-button (click)="handleChangeSidebar()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon style="color: var(--app-color)">menu</mat-icon>
     </button>
   </div>
   <div class="header-menu flex items-center justify-end gap-2">
-    <mat-slide-toggle [checked]="isDarkmode" (change)="handleChangeMode($event)"
-      >DarkMode</mat-slide-toggle
+    <mat-select
+      [value]="settings.language"
+      (selectionChange)="handleChangeLanguage($event)"
+      class="header-menu-languages"
     >
-    <mat-select [value]="language" (selectionChange)="handleChangeLanguage($event)" class="header-menu-languages">
       <mat-option *ngFor="let language of languages" [value]="language.code">
         {{ language.name }}
       </mat-option>
     </mat-select>
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon style="color: var(--app-color)">account_circle</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <span class="px-[16px]">Admin</span>
+      <mat-divider class="!mt-[10px]"></mat-divider>
+      <button mat-menu-item disabled>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item [routerLink]="'/auth/login'">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
