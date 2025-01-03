@@ -260,13 +260,14 @@ export class StreamingChatComponent implements OnInit {
       this.subscription = this.http
         .post(
           `https://localhost:7228/chat-api/chat/chat`,
-          'bạn có biết về ngôh ngữ python không',
+          {
+            role: 'user',
+            question: this.requestString
+          },
           { headers: headers }
         )
         .subscribe(
           (rs: any) => {
-            console.log("rs", rs)
-            console.log('text: ', rs.candidates[0].content.parts[0].text);
             this.answers.push(rs.candidates[0].content.parts[0].text);
             // this.answers.push(rs.outputs[0].outputs[0].messages[0].message);
             this.typeEffect();

@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -17,6 +17,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { StreamingChatComponent } from './streaming-chat/streaming-chat.component';
 import { FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
+import { AuthInterceptor } from './interceptor/authInterceptor';
+import { AuthService } from './services/auth.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -49,7 +51,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatDividerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    AuthService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

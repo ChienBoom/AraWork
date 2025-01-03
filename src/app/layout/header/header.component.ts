@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
-import { SidebarService } from 'src/app/services/sidebar.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Languages } from '../enums/settings';
 import { SettingsService } from 'src/app/services/settings.service';
@@ -14,8 +12,6 @@ export class HeaderComponent implements OnInit {
   languages = Languages;
   settings: any = {};
   constructor(
-    public themeService: ThemeService,
-    public sidebarService: SidebarService,
     private translate: TranslateService,
     private settingsService: SettingsService
   ) {

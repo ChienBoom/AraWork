@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from 'src/app/services/sidebar.service';
 import { Menus } from '../enums/menus';
 import { SettingsService } from 'src/app/services/settings.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +14,6 @@ export class SidebarComponent implements OnInit {
   menus = Menus;
 
   constructor(
-    public sidebarService: SidebarService,
     private settingsService: SettingsService,
     private router: Router
   ) {}

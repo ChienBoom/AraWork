@@ -2,6 +2,7 @@
   width: 100%;
   height: calc(100vh - 80px);
   background-color: var(--sidebar-background-color);
+  max-width: 100%;
 }
 
 .sidenav-content {
@@ -39,7 +40,7 @@
       }
     }
 
-    .menu-option-active{
+    .menu-option-active {
       color: var(--app-color);
     }
   }

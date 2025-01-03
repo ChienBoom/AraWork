@@ -3,17 +3,23 @@
     <div class="sidenav-menu">
       <div class="mt-[50px]">
         <div *ngFor="let menu of menus" class="sidenav-menu-item mb-[5px]">
-          <div (click)="handleRouter(menu.path)" class="item-button" [ngClass]="{'menu-option-active': menu.path === path}">
-            <mat-icon
-              [fontIcon]="menu.icon"
-            ></mat-icon>
-            <span class="text-base ml-1 font-normal">{{ menu.name | translate}}</span>
+          <div
+            (click)="handleRouter(menu.path)"
+            class="item-button"
+            [ngClass]="{ 'menu-option-active': menu.path === path }"
+          >
+            <mat-icon [fontIcon]="menu.icon"></mat-icon>
+            <span class="text-base ml-1 font-normal">{{
+              menu.name | translate
+            }}</span>
           </div>
         </div>
       </div>
     </div>
   </mat-drawer>
   <div class="sidenav-content">
-    <router-outlet></router-outlet>
+    <div class="w-full h-full">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </mat-drawer-container>
